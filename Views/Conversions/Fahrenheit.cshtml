@@ -1,6 +1,10 @@
 @model MetricSystemModel
 
 <form asp-controller="Conversions" asp-action="Fahrenheit" method="post" class="w-50">
+
+  <!-- validation summary at the top -->
+  <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
   <div class="mb-3">
     <label asp-for="FahrenheitValue" class="form-label">Fahrenheit Value</label>
     <input asp-for="FahrenheitValue" type="number" step="any" class="form-control" />
@@ -12,5 +16,5 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Convert</button>
-    <a asp-action="Fahrenheit" class="btn btn-secondary">Clear</a>
+  <a asp-action="Fahrenheit" class="btn btn-secondary">Clear</a>
 </form>

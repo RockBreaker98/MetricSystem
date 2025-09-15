@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MetricSystem.Models;
 
@@ -7,26 +6,30 @@ namespace MetricSystem.Controllers
     public class ConversionsController : Controller
     {
         // GET: /Conversions/Fahrenheit
-        [HttpGet]
+[HttpGet]
         public IActionResult Fahrenheit()
         {
-            return View();
+            ViewBag.CelsiusValue = null;
+            return View(new MetricSystemModel());   // class lives in TempModel.cs
         }
 
         // POST: /Conversions/Fahrenheit
         [HttpPost]
-        public IActionResult Fahrenheit(double? fahrenheit)
+        public IActionResult Fahrenheit(MetricSystemModel model)
         {
-            if (fahrenheit == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "Please enter a Fahrenheit value.";
-                return View();
+                // use your CalculateMetricSystem() from the model
+                var result = model.CalculateMetricSystem();
+                ViewBag.CelsiusValue = result?.ToString("F2");
+            }
+            else
+            {
+                ViewBag.CelsiusValue = null;
             }
 
-            double celsius = (fahrenheit.Value - 32) * 5 / 9;
-            ViewBag.Result = $"{celsius:F2}";
-            ViewBag.Fahrenheit = fahrenheit;
-            return View();
+            // return the same model so the input keeps the typed value
+            return View(model);
         }
 
         // GET: /Conversions/Inch

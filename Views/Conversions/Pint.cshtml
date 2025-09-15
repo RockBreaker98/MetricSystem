@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Pint Conversion";
+}
+
+<h2 class="text-center text-primary mb-4">Pint to Liter</h2>
+
+<div class="container">
+    <form asp-action="Pint" method="post" class="row g-3">
+        <!-- Input Pint -->
+        <div class="col-md-6">
+            <label for="pint" class="form-label">Enter Pints</label>
+            <input type="number" step="any" id="pint" name="pint"
+                   class="form-control"
+                   value="@(ViewBag.Pint ?? "")"
+                   placeholder="Enter Pint" />
+        </div>
+
+        <!-- Output Liter -->
+        <div class="col-md-6">
+            <label for="liter" class="form-label">Liter Result</label>
+            <input type="text" id="liter" name="liter"
+                   class="form-control"
+                   value="@(ViewBag.Liter != null ? ViewBag.Liter.ToString("F2") : "")"
+                   readonly />
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary me-2">Convert</button>
+            <a href="/Conversions/Pint" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+</div>

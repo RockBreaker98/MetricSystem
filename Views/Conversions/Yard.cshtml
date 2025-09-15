@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Yard Conversion";
+}
+
+<h2 class="text-center text-primary mb-4">Yard to Meter</h2>
+
+<div class="container">
+    <form asp-action="Yard" method="post" class="row g-3">
+        <!-- Input Yard -->
+        <div class="col-md-6">
+            <label for="yard" class="form-label">Enter Yards</label>
+            <input type="number" step="any" id="yard" name="yard"
+                   class="form-control"
+                   value="@(ViewBag.Yard ?? "")"
+                   placeholder="Enter Yard" />
+        </div>
+
+        <!-- Output Meter -->
+        <div class="col-md-6">
+            <label for="meter" class="form-label">Meter Result</label>
+            <input type="text" id="meter" name="meter"
+                   class="form-control"
+                   value="@(ViewBag.Meter != null ? ViewBag.Meter.ToString("F2") : "")"
+                   readonly />
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary me-2">Convert</button>
+            <a href="/Conversions/Yard" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+</div>

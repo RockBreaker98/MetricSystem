@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Fahrenheit to Celsius";
+}
+
+<h2 class="mb-4">Convert Fahrenheit to Celsius</h2>
+
+<form asp-action="Fahrenheit" method="post" class="w-50">
+    <!-- Fahrenheit input -->
+    <div class="mb-3">
+      <label class="form-label" for="fahrenheit">Fahrenheit Value</label>
+      <input id="fahrenheit" type="number" name="fahrenheit" step="any"
+         class="form-control"
+         value="@(ViewBag.Fahrenheit ?? "")" />  <!-- repopulate -->
+    </div>
+
+    <!-- Celsius output -->
+    <div class="mb-3">
+        <label class="form-label">Celsius Value</label>
+        <input readonly class="form-control" value="@ViewBag.Result" />
+    </div>
+
+    <!-- Error message -->
+    @if (ViewBag.Error != null)
+    {
+        <div class="text-danger mb-3">@ViewBag.Error</div>
+    }
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-primary me-2">Convert</button>
+    <a asp-action="Fahrenheit" class="btn btn-secondary">Clear</a>
+</form>

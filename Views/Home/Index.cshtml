@@ -1,26 +1,10 @@
-﻿@model MetricSystemModel
-@{
-    ViewData["Title"] = "Convert Fahrenheit to Celsius";
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
 
-<h1>Metric System</h1>
-
-<form asp-action="Index" method="post">
-    
-    <div asp-validation-summary="All"></div>
-
-    
-    <div class="inline-group">
-        <label asp-for="FahrenheitValue">Fahrenheit Value:</label>
-        <input asp-for="FahrenheitValue" />
+<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <div class="bg-light p-5 rounded-3 shadow text-center" style="max-width: 700px; opacity: 0.9;">
+        <h1 class="display-5 fw-bold">Welcome to Metric System</h1>
+        <p class="fs-5 mt-3">Easily convert from British system to international metric system.</p>
     </div>
-
-    <div class="inline-group">
-        <label asp-for="CelsiusValue">Celsius Value:</label>
-        
-        <input asp-for="CelsiusValue" value="@ViewBag.CelsiusValue" readonly />
-    </div>
-
-    <button type="submit">Convert</button>
-    <a asp-action="Index">Clear</a>
-</form>
+</div>
